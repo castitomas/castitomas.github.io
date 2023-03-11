@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consistency is hard.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../index.css"></head>
+  <body>
+    <div id="loading">
+      <div id="spinner"></div>
+    </div>
+    <a href="/" class="go_back"><i class="fas fa-arrow-left"></i></a>
+    <div id="background_overlay"></div>
+    <div id="background" style="background: url(top_image.jpeg) center;"></div>
+    <table id="profile_blog">
+      <tbody>
+        <tr>
+          <td style="width:8vw;"><div id="profile_img_blog"></div></td>
+          <td style="width:52vw;">
+            <div id="username_blog"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="blog-display">
+      <h1 id="blog_title">Consistency is hard.</h1>
+      <h2 id="blog_sub_title">Step by step is the key.</h2>
+      <div id="blog"><img src="img_0.jpeg" alt="blog image 0" id="img_0_original"><p id="para_0_original">My journey started long ago when I went to my first year pursuing a Geology Bachelor's degree. I was convinced that I chose the right path for my life. But I was far from that. When the doubts came to my mind, my personal life turned upside down with the decisions I made. <b> The first important step that I took was quit studying Geology. </b>
+<br>
+<br> 
+  My sub-conscience somehow knew that it was the wrong path for me and to be true, I battled with the thought of failure. To me choosing the wrong career was a failure. <b> Failure. </b> It's a strong word to take slightly. But I'll not dive deep on that. Time after, I'll comprehend (with therapy) that none of my decisions were failures. So many things happened in the middle, it's too long to write down here. But the important thing is: <b> the second and most important step for me was learning about Software Development. </b>
+<br>
+<br>
+  I felt in love. It was a rough path too, but I enjoyed so much the struggle when it comes to problem solving and logic. And I'll still do to this day. Currently I'm studying a bachelor's degree in IT and I'm happy. And yes, somedays is hard to get up and start coding and learning on my own aside university, but the feeling of relief knowing that I'm doing what I like it's incomparable. 
+<br>
+<br>
+  Nowadays, my objetive is to work as Software Developer, especially working on C#/.NET. I have that on sight, and I think this time, it's the right path. Finally.</p></div>
+    </div>
+    <div id="footer_blog">
+      <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
+    </div>
+    <script type="text/javascript">
+      setTimeout(function() {
+        document.getElementById("loading").classList.add("animated");
+        document.getElementById("loading").classList.add("fadeOut");
+        setTimeout(function() {
+          document.getElementById("loading").classList.remove("animated");
+          document.getElementById("loading").classList.remove("fadeOut");
+          document.getElementById("loading").style.display = "none";
+        }, 800);
+      }, 1500);
+      $.getJSON("../../config.json", function(user) {
+        var icon = document.createElement("link");
+        icon.setAttribute("rel", "icon");
+        icon.setAttribute("href", user[0].userimg);
+        icon.setAttribute("type", "image/png");
+        document.getElementsByTagName("head")[0].appendChild(icon);
+        document.getElementById(
+          "profile_img_blog"
+        ).style.background = `url('${user[0].userimg}') center center`;
+        document.getElementById(
+          "username_blog"
+        ).innerHTML = `<span style="display:${
+          user[0].name == null || !user[0].name ? "none" : "block"
+        };">${user[0].name}</span>@${user[0].username}<b id="blog_time"></b>`;
+
+        if ((user[0].theme = "dark.css")) {
+          document.querySelector("#background_overlay").style.background =
+            "linear-gradient(0deg, rgba(10, 10, 10, 1), rgba(10, 10, 10, 0.1))";
+        } else {
+          document.querySelector("#background_overlay").style.background =
+            "linear-gradient(0deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1))";
+        }
+      });
+    </script>
+  
+
+</body></html>
